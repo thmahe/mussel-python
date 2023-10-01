@@ -23,6 +23,52 @@ Python applications with **pyinstaller** within a standardized environment.
 
 * **Portability:** Python application built with mussel-python runs consistently across different operating systems and environments.
 
+# Installation
+
+Install mussel using pip:
+```shell
+pip install mussel
+```
+
+## Expected Binary Compatibility
+
+This section describe compatibility of your python executable after mussel's build.
+
+### Linux
+
+Compatibles Linux distributions : 
+* Any distro with GLIBC >= 2.14
+  * Ubuntu 14.04 or higher
+  * Debian 8 or higher
+  * Fedora 20 or higher
+  * And many more ...
+
+|                          Command |       Bundled Python*        |
+|---------------------------------:|:----------------------------:|
+|  `mussel --python 3.8 [OPTIONS]` | 3.8.18 (With OpenSSL 3.1.3)  |
+|  `mussel --python 3.9 [OPTIONS]` | 3.9.13 (With OpenSSL 3.1.3)  |
+| `mussel --python 3.10 [OPTIONS]` | 3.10.12 (With OpenSSL 3.1.3) |
+| `mussel --python 3.11 [OPTIONS]` | 3.11.5 (With OpenSSL 3.1.3)  |
+
+(*) **Bundled Python**: Python distributed inside mussel (pyinstaller) bundled application.
+
+### Windows
+
+|                          Command |        Bundled Python*        | Compatiblity        |
+|---------------------------------:|:-----------------------------:|---------------------|
+|  `mussel --python 3.8 [OPTIONS]` | 3.8.10 (With OpenSSL 1.1.1n)  | Windows 7 or higher |
+|  `mussel --python 3.9 [OPTIONS]` | 3.9.13 (With OpenSSL 1.1.1n)  | Windows 8 or higher |
+| `mussel --python 3.10 [OPTIONS]` | 3.10.11 (With OpenSSL 1.1.1n) | Windows 8 or higher |
+| `mussel --python 3.11 [OPTIONS]` | 3.11.5 (With OpenSSL 1.1.1n)  | Windows 8 or higher |
+
+### Compatiblity example
+
+Building your application with `mussel --python 3.11` will produce:
+* An application running on Python 3.11.5 on Windows & Linux
+* Compatible with:
+  * Ubuntu 14.04 or higher
+  * Windows 8 or higher
+
 # Getting Started
 
 ## Prerequisites
@@ -31,7 +77,6 @@ Before you begin, make sure you have the following prerequisites installed on yo
 
 * Docker ([Install Docker Engine](https://docs.docker.com/engine/install/))
 * `mussel`
-  * Install with `pip install mussel`
 
 ## Write your first mussel standalone app
 
@@ -92,6 +137,11 @@ $ docker run --rm -v ./dist/my-app:/my-app alpine:latest sh -c "apk add libc6-co
 OK: 8 MiB in 19 packages
 Python 3.10.12 (main, Sep 29 2023, 07:32:58) [GCC 4.8.4]
 OpenSSL 3.1.3 19 Sep 2023
+
+# Windows ?
+\> .\dist\my-app.exe
+Python 3.9.13 (tags/v3.9.13:6de2ca5, May 17 2022, 16:36:42) [MSC v1929 64 bit (AMD64)]
+OpenSSL 1.1.1n  15 Mar 2022
 ```
 
 # License

@@ -44,12 +44,13 @@ COPY --from=build /usr/local/lib /usr/local/lib
 
 RUN ldconfig /usr/local/lib /usr/local/lib64 /opt/python/lib
 
-RUN useradd -ms /bin/bash mussel
-RUN mkdir /src && chown mussel /src
+RUN adduser --home /home/mussel --disabled-password --disabled-login mussel
+COPY entrypoint_linux.sh /entrypoint.sh
+RUN mkdir /src && chown mussel /src /entrypoint.sh
 
 USER mussel
 
-COPY entrypoint.sh entrypoint.sh
+ENV PATH=${PATH}:/home/mussel/.local/bin
 
 RUN /opt/python/bin/python3 -m pip install pip --upgrade && \
     /opt/python/bin/python3 -m pip install pyinstaller==6.0.0
