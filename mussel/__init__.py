@@ -20,7 +20,7 @@ sys.tracebacklimit = 0
 
 def mussel():
     dockerhub_tags = urllib.request.urlopen("https://hub.docker.com/v2/namespaces/8env/repositories/mussel-python/tags")
-    tags = sorted(set([tag.get('name').replace('-win', '') for tag in json.load(dockerhub_tags).get('results')]))
+    tags = sorted(set([tag.get('name') for tag in json.load(dockerhub_tags).get('results')]))
 
     parser = argparse.ArgumentParser("mussel")
     parser.add_argument('--python', choices=tags, required=True, dest="python_version")
@@ -36,16 +36,10 @@ def mussel():
     if shutil.which("docker") is None:
         raise SystemError('Docker not installed on system. Aborted.')
 
-    volume = f"{args.source_path}:/src"
+    v_source = f"{args.source_path}:/src"
 
     subprocess.call(
-        f'{shutil.which("docker")} run --rm -v "{volume}" 8env/mussel-python:{args.python_version}-win ' +
-        ' '.join(extra_args),
-        shell=True,
-    )
-
-    subprocess.call(
-        f'{shutil.which("docker")} run --rm -v "{volume}" 8env/mussel-python:{args.python_version} ' +
-        ' '.join(extra_args),
-        shell=True,
+        f'{shutil.which("docker")} run --pull=always --rm -v "{v_source}" ' +
+        ' '.join([f'8env/mussel-python:{args.python_version}'] + extra_args),
+        shell=True
     )

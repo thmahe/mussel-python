@@ -54,12 +54,12 @@ Compatibles Linux distributions :
 
 ### Windows
 
-|                          Command |        Bundled Python*        | Compatiblity        |
-|---------------------------------:|:-----------------------------:|---------------------|
-|  `mussel --python 3.8 [OPTIONS]` | 3.8.10 (With OpenSSL 1.1.1n)  | Windows 7 or higher |
-|  `mussel --python 3.9 [OPTIONS]` | 3.9.13 (With OpenSSL 1.1.1n)  | Windows 8 or higher |
-| `mussel --python 3.10 [OPTIONS]` | 3.10.11 (With OpenSSL 1.1.1n) | Windows 8 or higher |
-| `mussel --python 3.11 [OPTIONS]` | 3.11.5 (With OpenSSL 1.1.1n)  | Windows 8 or higher |
+|                              Command |        Bundled Python*        | Compatiblity        |
+|-------------------------------------:|:-----------------------------:|---------------------|
+|  `mussel --python 3.8-win [OPTIONS]` | 3.8.10 (With OpenSSL 1.1.1n)  | Windows 7 or higher |
+|  `mussel --python 3.9-win [OPTIONS]` | 3.9.13 (With OpenSSL 1.1.1n)  | Windows 8 or higher |
+| `mussel --python 3.10-win [OPTIONS]` | 3.10.11 (With OpenSSL 1.1.1n) | Windows 8 or higher |
+| `mussel --python 3.11-win [OPTIONS]` | 3.11.5 (With OpenSSL 1.1.1n)  | Windows 8 or higher |
 
 ### Compatiblity example
 
